@@ -272,6 +272,12 @@ target_link_libraries(task_1 ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 install(TARGETS task_1 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
+add_executable(control_keys src/control_keys.cpp)
+target_link_libraries(control_keys ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+install(TARGETS control_keys DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
 
 
 ##add_executable(inicialPose src/inicialPose.cpp)
