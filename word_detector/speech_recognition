@@ -1,0 +1,28 @@
+import speech_recognition as sr
+
+# Create recognition instance
+r = sr.Recognizer()
+
+# Target
+target_words = ["cautín", "cables", "protoboard", "estaño"]
+
+# Use microphone
+with sr.Microphone() as source:
+    
+    print("Say something...")
+    # Listen to the audio
+    audio = r.listen(source, timeout=5, phrase_time_limit=8)
+
+    # Recognition
+    try:
+        text = r.recognize_google(audio, language="es-ES")
+        words = text.split()
+        if words[2] in target_words:
+            print("Object word target identified:", words[2])
+        else:
+            print("Object word target not identified")
+                  
+    except sr.UnknownValueError:
+        print("Could not understand the audio")
+    except sr.RequestError as e:
+        print("Could not request results from Google's speech recognition service; {0}".format(e))
